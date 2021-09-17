@@ -23,4 +23,7 @@ option('app-lib-only',
     value: false,
     description: 'Limit build to core library only and without the keyboard layout controller. This is to allow flatpak bundlings.'
 )
-
+option('vapi',
+    type: 'boolean',
+    value: true,
+    description: 'Generate vapi data (requires vapigen)')

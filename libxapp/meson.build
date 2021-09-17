@@ -148,12 +148,14 @@ install_data(['xapp-glade-catalog.xml'],
     install_dir : join_paths(get_option('datadir'), 'glade/catalogs')
 )
 
-gnome.generate_vapi('xapp',
-    packages: ['glib-2.0', 'gio-unix-2.0', 'gtk+-3.0'],
-    sources: gir[0],
-    metadata_dirs: meson.current_source_dir(),
-    install: true
-)
+if get_option('vapi')
+    gnome.generate_vapi('xapp',
+        packages: ['glib-2.0', 'gio-unix-2.0', 'gtk+-3.0'],
+        sources: gir[0],
+        metadata_dirs: meson.current_source_dir(),
+        install: true
+    )
+endif
 
 if not app_lib_only
     gtk3_module = shared_module(
